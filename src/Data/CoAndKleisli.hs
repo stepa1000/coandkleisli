@@ -33,3 +33,11 @@ instance (Comonad w, Monad m) => Arrow (CoAndKleisli w m) where
   first (CoAndKleisli a) = CoAndKleisli $ \wxy -> do
     x2 <- a (extend (fst . extract) wxy)
     return (x2, snd $ extract wxy)
+
+instance (Comonad w, Monad m) => ArrowChoice (CoAndKleisli w m) where
+  left (CoAndKleisli a) = CoAndKleisli $ \we -> case extract we of
+    Left x -> fmap Left $ a $ fmap (const x) we
+    Right x -> return $ Right x
+
+instance (Comonad w, Monad m) => ArrowApply (CoAndKleisli w m) where
+  app = CoAndKleisli $ \ wfb -> (\(CoAndKleisli wf, b)-> wf $ fmap (const b) wfb) $ extract wfb

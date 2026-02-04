@@ -1,10 +1,16 @@
 name:                coandkleisli
-version:             0.1.0.0
+version:             0.1.0.1
 github:              "githubuser/coandkleisli"
 license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2023 Author name here"
+author:              "Stepan"
+maintainer:          "stepa100023@gmail.com"
+copyright:           "2023 Stepan"
+
+synopsis: "Monad and comonad composition, but only for adjunctions"
+
+category: Control
+
+description: " Please see the README on GitHub at https://github.com/stepa1000/coandkleisli "
 
 extra-source-files:
 - README.md
